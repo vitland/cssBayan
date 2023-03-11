@@ -1,0 +1,150 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/fonts.css);
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body{
+  overflow-x: hidden;
+  margin-right: calc(-1 * (100vw - 100%));
+}
+
+.main {
+  max-width: 100vw;
+  min-width: 19rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #eeeadc;
+
+}
+
+.header__title {
+  margin: 1rem 0;
+  font-size: 3rem;
+}
+
+.meme-container {
+  max-width: 40rem;
+  min-width: 19rem;
+  list-style-type: none;
+  margin: 0.5rem;
+}
+
+.meme {
+  max-width: 30rem;
+  margin: 0;
+  background: #eeeadc;
+  border-top: #a7a9be solid 0.1rem;
+}
+
+.meme__label {
+  min-width: 19rem;
+  padding: 1.1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.8rem;
+}
+
+.meme__content {
+  max-width: 40rem;
+  min-width: 19rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease;
+}
+
+.meme__image {
+  width: 40%;
+  padding: 1rem;
+  transition: width .4s ease;
+}
+
+.meme__radio:checked ~ .meme__content > .meme__image {
+  width: 100%;
+}
+
+.meme__content:active > .meme__image{
+  opacity: .8;
+}
+
+.meme-container:hover .meme__icon {
+  display: block;
+}
+
+.meme__radio:checked ~ .meme__label > .meme__icon {
+  transform: rotate(180deg);
+}
+
+.meme__icon {
+  display: none;
+  transition: transform 0.5s ease-in, color 0.5s ease-in-out;
+}
+
+.meme__radio:checked ~ .meme__content {
+  max-height: 40rem;
+}
+
+.meme__radio:checked ~ .meme__label {
+  color: #0212ec;
+}
+
+@media (hover: hover) {
+  .meme__content:hover,
+  .meme__label:hover {
+    cursor: pointer;
+  }
+
+  .meme__content:hover ~ .meme__label > .meme__icon {
+    transform: rotate(180deg);
+  }
+
+  .meme:hover > .meme__label > .meme__icon {
+    transform: rotate(180deg);
+  }
+
+  .meme__label:hover > .meme__icon {
+    transform: rotate(180deg);
+  }
+
+  .meme:hover > .meme__radio:not(:checked) ~ .meme__content {
+    max-height: 40rem;
+  }
+
+  .meme:hover > .meme__radio:not(:checked) ~ .meme__content > .meme__image {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .meme__image {
+    padding: .5rem;
+  }
+
+  .meme__label {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .meme__image {
+    padding: .5rem;
+  }
+  
+  .header__title{
+    font-size: 2rem;
+  }
+
+  .meme__label {
+    font-size: 1.1rem;
+  }
+}
